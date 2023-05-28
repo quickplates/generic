@@ -1,0 +1,7 @@
+# Exclude certain files from being taken into account for language stats
+.devcontainer/** linguist-vendored
+.github/** linguist-vendored
+.trunk/** linguist-vendored
+.vscode/** linguist-vendored
+.envrc linguist-vendored
+flake.nix linguist-vendored
