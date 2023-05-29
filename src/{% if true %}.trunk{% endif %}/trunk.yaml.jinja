@@ -11,14 +11,11 @@ runtimes:
   enabled:
     # Needed for gitleaks, shfmt, actionlint
     - go@1.19.5
-    # Needed for prettier, markdownlint, svgo, eslint
+    # Needed for prettier, markdownlint{% if docs %}, svgo, eslint{% endif %}
     - node@18.12.1
     # Needed for yamllint
     - python@3.10.8
 lint:
-  disabled:
-    # Disable default nix formatter
-    - nixpkgs-fmt
   definitions:
     # Nix formatting check (local)
     - name: nix-fmt-check
@@ -46,6 +43,9 @@ lint:
             check
             path://${workspace}
           success_codes: [0, 1]
+  disabled:
+    # Disable default nix formatter
+    - nixpkgs-fmt
   enabled:
     # Check for whitespace errors
     - git-diff-check
@@ -63,10 +63,12 @@ lint:
     - shfmt@3.5.0
     # GitHub Actions linting
     - actionlint@1.6.24
+    {%- if docs %}
     # SVG formatting
     - svgo@3.0.2
     # JavaScript linting
     - eslint@8.41.0
+    {%- endif %}
     # Nix formatting check
     - nix-fmt-check@SYSTEM
     # Nix flake check
@@ -82,6 +84,7 @@ actions:
         --extra-experimental-features 'nix-command flakes'
         flake
         update
+    {%- if docs %}
     # Update docs dependencies
     - id: update-docs-deps
       display_name: Update docs dependencies
@@ -117,10 +120,13 @@ actions:
         docs
         --
         ${@}
+    {%- endif %}
   enabled:
     # Update flake.lock
     - update-flake-lock
+    {%- if docs %}
     # Update docs dependencies
     - update-docs-deps
     # Run docusaurus
     - docs
+    {%- endif %}

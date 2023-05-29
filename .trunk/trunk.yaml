@@ -95,7 +95,7 @@ actions:
         copier
         --overwrite
         --data 'username=quickplates'
-        --data 'projectname=generic-example'
+        --data 'project_name=generic-example'
         --data 'description=Generic project example 👤'
         --data 'repository=https://github.com/quickplates/generic-example'
         --data 'docs=https://quickplates.github.io/generic-example'
