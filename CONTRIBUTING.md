@@ -55,18 +55,32 @@ If you use the Dev Container setup,
 you will have the `direnv` extension installed in Visual Studio Code.
 This should automatically ask you to allow `direnv` when you open the project.
 
+## 🟦 Using `Task`
+
+This project uses [`Task`](https://taskfile.dev) to manage development tasks.
+You can find all the tasks in `Taskfile.dist.yaml`.
+You can create your own `Taskfile.yaml` to include your own tasks.
+
+To see all available tasks, you can run:
+
+```sh
+task --list
+```
+
+If you use the Dev Container setup,
+you will have the `Task` extension installed in Visual Studio Code.
+This will allow you to run tasks from the editor.
+
 ## 🧹 Using `Trunk`
 
-This project uses [`Trunk`](https://trunk.io) to help with development.
-It manages formatting, linting and running various actions.
+This project uses [`Trunk`](https://trunk.io) to help with formatting and linting.
 This way all developers use the same tools and configurations.
 
 There are multiple ways in which you can use `Trunk`.
-Here are the most common ones:
+Here are the most common ones, using `Task`:
 
-- `trunk fmt` - Run formatting on the whole project
-- `trunk check` - Run linting on the whole project
-- `trunk run update-flake-lock` - Run an action that updates the `flake.lock` file
+- `task fmt` - Run formatting on all changed files
+- `task lint` - Run linting on all changed files
 
 Linting is automatically run on every pull request and push to the `main` branch.
 You can find the GitHub Actions workflow that does this in `.github/workflows/lint.yml`.

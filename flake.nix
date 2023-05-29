@@ -53,9 +53,10 @@
             name = "dev";
 
             packages = [
-              pkgs.trunk-io
               pkgs.nil
               pkgs.copier
+              pkgs.go-task
+              pkgs.trunk-io
             ];
           };
 
@@ -63,6 +64,7 @@
             name = "lint";
 
             packages = [
+              pkgs.go-task
               pkgs.trunk-io
             ];
           };

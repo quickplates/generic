@@ -59,6 +59,8 @@
       "extensions": [
         // Direnv
         "mkhl.direnv",
+        // Task
+        "task.vscode-task",
         // Trunk
         "Trunk.io",
         // Ignore files
