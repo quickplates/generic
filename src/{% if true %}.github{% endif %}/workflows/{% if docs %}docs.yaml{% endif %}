@@ -29,7 +29,6 @@ jobs:
     timeout-minutes: 5
     env:
       NIX_CACHE_DIR: /home/runner/.nixcache
-      TRUNK_CACHE_DIR: /home/runner/.trunkcache
     permissions:
       # Needed to checkout code
       contents: read
@@ -44,11 +43,6 @@ jobs:
         with:
           path: ${{ env.NIX_CACHE_DIR }}
           key: docs-nix
-      - name: Setup Trunk cache
-        uses: actions/cache@v3.3.1
-        with:
-          path: ${{ env.TRUNK_CACHE_DIR }}
-          key: docs-trunk
       - name: Setup docs modules cache
         uses: actions/cache@v3.3.1
         with:
@@ -62,13 +56,23 @@ jobs:
       # See: https://github.com/cachix/install-nix-action/issues/56
       - name: Import Nix store cache
         if: steps.cache-nix.outputs.cache-hit == 'true'
-        run: nix-store --import < ${{ env.NIX_CACHE_DIR }}/archive.nar
+        run: >
+          nix-store
+          --import
+          < ${{ env.NIX_CACHE_DIR }}/archive.nar
       - name: Build docs
-        env:
-          TRUNK_CACHE: ${{ env.TRUNK_CACHE_DIR }}
-        run: |
-          nix develop .#docs --command -- \
-            trunk run docs -- build --out-dir build
+        run: >
+          nix
+          develop
+          .#docs
+          --command
+          --
+          task
+          docs
+          --
+          build
+          --out-dir
+          build
       - name: Setup Pages
         uses: actions/configure-pages@v3.0.6
       - name: Upload artifact
@@ -78,9 +82,13 @@ jobs:
       # See: https://github.com/cachix/install-nix-action/issues/56
       - name: Export Nix store cache
         if: "!cancelled()"
-        run: |
-          mkdir -p ${{ env.NIX_CACHE_DIR }}
-          nix-store --export $(find /nix/store -maxdepth 1 -name '*-*') \
+        run: >
+          mkdir
+          -p
+          ${{ env.NIX_CACHE_DIR }}
+          &&
+          nix-store
+          --export $(find /nix/store -maxdepth 1 -name '*-*')
           > ${{ env.NIX_CACHE_DIR }}/archive.nar
   deploy:
     name: Deploy docs

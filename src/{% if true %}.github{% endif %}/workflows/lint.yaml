@@ -33,7 +33,11 @@ jobs:
       # We need to fetch upstream so Trunk can compare against it
       - name: Fetch upstream
         if: github.event_name == 'pull_request'
-        run: git fetch origin ${{ github.event.pull_request.base.ref }}
+        run: >
+          git
+          fetch
+          origin
+          ${{ github.event.pull_request.base.ref }}
       - name: Setup Nix cache
         uses: actions/cache@v3.3.1
         id: cache-nix
@@ -53,24 +57,46 @@ jobs:
       # See: https://github.com/cachix/install-nix-action/issues/56
       - name: Import Nix store cache
         if: steps.cache-nix.outputs.cache-hit == 'true'
-        run: nix-store --import < ${{ env.NIX_CACHE_DIR }}/archive.nar
+        run: >
+          nix-store
+          --import
+          < ${{ env.NIX_CACHE_DIR }}/archive.nar
       - name: Trunk Check
         if: github.event_name == 'pull_request'
         env:
           TRUNK_CACHE: ${{ env.TRUNK_CACHE_DIR }}
-        run: |
-          nix develop .#lint --command -- \
-            trunk check --ci \
-              --upstream ${{ github.event.pull_request.base.sha }}
+        run: >
+          nix
+          develop
+          .#lint
+          --command
+          --
+          trunk
+          check
+          --ci
+          --upstream
+          ${{ github.event.pull_request.base.sha }}
       - name: Trunk Check
         if: github.event_name != 'pull_request'
         env:
           TRUNK_CACHE: ${{ env.TRUNK_CACHE_DIR }}
-        run: nix develop .#lint --command -- trunk check --ci
+        run: >
+          nix
+          develop
+          .#lint
+          --command
+          --
+          trunk
+          check
+          --ci
       # See: https://github.com/cachix/install-nix-action/issues/56
       - name: Export Nix store cache
         if: "!cancelled()"
-        run: |
-          mkdir -p ${{ env.NIX_CACHE_DIR }}
-          nix-store --export $(find /nix/store -maxdepth 1 -name '*-*') \
+        run: >
+          mkdir
+          -p
+          ${{ env.NIX_CACHE_DIR }}
+          &&
+          nix-store
+          --export $(find /nix/store -maxdepth 1 -name '*-*')
           > ${{ env.NIX_CACHE_DIR }}/archive.nar
