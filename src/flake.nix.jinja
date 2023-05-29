@@ -55,7 +55,9 @@
             packages = [
               pkgs.trunk-io
               pkgs.nil
+              {%- if docs %}
               pkgs.nodejs
+              {%- endif %}
               pkgs.copier
             ];
           };
@@ -67,6 +69,7 @@
               pkgs.trunk-io
             ];
           };
+          {%- if docs %}
 
           docs = pkgs.mkShell {
             name = "docs";
@@ -76,6 +79,7 @@
               pkgs.nodejs
             ];
           };
+          {%- endif %}
         };
       };
     };

@@ -1,11 +1,11 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const url = new URL("{{ docs }}");
+const url = new URL("{{ docs_url }}");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "{{ projectname }} docs",
+  title: "{{ project_name }} docs",
   favicon: "favicon.ico",
 
   url: `${url.protocol}//${url.host}`,
@@ -44,9 +44,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "{{ projectname }} docs",
+        title: "{{ project_name }} docs",
         logo: {
-          alt: "{{ projectname }} docs logo",
+          alt: "{{ project_name }} docs logo",
           src: "logo.svg",
         },
         items: [

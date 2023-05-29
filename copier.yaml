@@ -1,9 +1,11 @@
 ---
+# Questions
+
 username:
   type: str
   help: Your GitHub username
 
-projectname:
+project_name:
   type: str
   help: The name of your project
 
@@ -14,12 +16,25 @@ description:
 repository:
   type: str
   help: The URL of the GitHub repository where you will host your project
-  default: "https://github.com/{{ username }}/{{ projectname }}"
+  default: "https://github.com/{{ username }}/{{ project_name }}"
 
 docs:
+  type: bool
+  help: Whether to include a documentation site for your project
+  default: true
+
+docs_url:
   type: str
   help: The URL of the documentation site for your project
-  default: "https://{{ username }}.github.io/{{ projectname }}"
+  default: "https://{{ username }}.github.io/{{ project_name }}"
+  when: "{{ docs }}"
+
+releases:
+  type: bool
+  help: Whether you want to publish releases of your project on GitHub
+  default: true
+
+# Configuration
 
 _subdirectory: src
 _answers_file: .copier-answers.yaml
