@@ -55,6 +55,7 @@
             packages = [
               pkgs.trunk-io
               pkgs.nil
+              pkgs.nodejs
               pkgs.copier
             ];
           };
@@ -64,6 +65,15 @@
 
             packages = [
               pkgs.trunk-io
+            ];
+          };
+
+          docs = pkgs.mkShell {
+            name = "docs";
+
+            packages = [
+              pkgs.trunk-io
+              pkgs.nodejs
             ];
           };
         };

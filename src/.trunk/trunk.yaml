@@ -11,7 +11,7 @@ runtimes:
   enabled:
     # Needed for gitleaks, shfmt, actionlint
     - go@1.19.5
-    # Needed for prettier, markdownlint
+    # Needed for prettier, markdownlint, svgo, eslint
     - node@18.12.1
     # Needed for yamllint
     - python@3.10.8
@@ -63,6 +63,10 @@ lint:
     - shfmt@3.5.0
     # GitHub Actions linting
     - actionlint@1.6.24
+    # SVG formatting
+    - svgo@3.0.2
+    # JavaScript linting
+    - eslint@8.41.0
     # Nix formatting check
     - nix-fmt-check@SYSTEM
     # Nix flake check
@@ -78,22 +82,45 @@ actions:
         --extra-experimental-features 'nix-command flakes'
         flake
         update
-    # Build project
-    - id: build
-      display_name: Build
-      description: Build project using the template
+    # Update docs dependencies
+    - id: update-docs-deps
+      display_name: Update docs dependencies
+      description: Update docs dependencies to latest versions
+      run_from: docs
       run: >-
-        copier
-        --overwrite
-        --data 'username=quickplates'
-        --data 'projectname=generic-example'
-        --data 'description=Generic project example 👤'
-        --data 'repository=https://github.com/quickplates/generic-example'
-        --data 'docs=https://quickplates.github.io/generic-example'
-        ./
-        ./build/
+        npm
+        install
+        --prefer-offline
+        --no-audit
+        --no-fund
+        --quiet
+        --no-progress &&
+        npm
+        run
+        update
+    # Run docusaurus
+    - id: docs
+      display_name: Run docusaurus
+      description: Run docusaurus commands
+      run_from: docs
+      interactive: optional
+      run: >-
+        npm
+        install
+        --prefer-offline
+        --no-audit
+        --no-fund
+        --quiet
+        --no-progress &&
+        npm
+        run
+        docs
+        --
+        ${@}
   enabled:
     # Update flake.lock
     - update-flake-lock
-    # Build project
-    - build
+    # Update docs dependencies
+    - update-docs-deps
+    # Run docusaurus
+    - docs
