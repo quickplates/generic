@@ -11,14 +11,16 @@ runtimes:
   enabled:
     # Needed for gitleaks, shfmt, actionlint
     - go@1.19.5
-    # Needed for prettier, markdownlint
+    # Needed for prettier, markdownlint, svgo, eslint
     - node@18.12.1
     # Needed for yamllint
     - python@3.10.8
 lint:
-  disabled:
-    # Disable default nix formatter
-    - nixpkgs-fmt
+  ignore:
+    - linters: [ALL]
+      paths:
+        # Ignore jinja files
+        - "**/*.jinja"
   definitions:
     # Nix formatting check (local)
     - name: nix-fmt-check
@@ -46,6 +48,9 @@ lint:
             check
             path://${workspace}
           success_codes: [0, 1]
+  disabled:
+    # Disable default nix formatter
+    - nixpkgs-fmt
   enabled:
     # Check for whitespace errors
     - git-diff-check
@@ -63,6 +68,10 @@ lint:
     - shfmt@3.5.0
     # GitHub Actions linting
     - actionlint@1.6.24
+    # SVG formatting
+    - svgo@3.0.2
+    # JavaScript linting
+    - eslint@8.41.0
     # Nix formatting check
     - nix-fmt-check@SYSTEM
     # Nix flake check
