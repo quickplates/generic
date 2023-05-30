@@ -32,6 +32,12 @@ tasks:
         .copier-answers.yaml
         {{ '{{.CLI_ARGS}}' }}
         update
+  copier:
+    desc: Run copier
+    cmds:
+      - >
+        copier
+        {{ '{{.CLI_ARGS}}' }}
   {%- if docs %}
   install-docs:
     desc: Install docs dependencies

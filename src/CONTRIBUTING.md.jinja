@@ -71,6 +71,21 @@ If you use the Dev Container setup,
 you will have the `Task` extension installed in Visual Studio Code.
 This will allow you to run tasks from the editor.
 
+## 🔄 Fetching template updates
+
+The template can change over time.
+To fetch the latest changes from the template,
+make sure you have a clean working tree and
+then run the following command:
+
+```sh
+task fetch-template
+```
+
+There might be conflicts if you have made changes to the templated files yourself.
+I recommend that you choose to overwrite the files with the template changes
+and then manually review the changes using `git`.
+
 ## 🧹 Using `Trunk`
 
 This project uses [`Trunk`](https://trunk.io) to help with formatting and linting.

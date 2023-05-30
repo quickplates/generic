@@ -61,6 +61,15 @@
             ];
           };
 
+          template = pkgs.mkShell {
+            name = "template";
+
+            packages = [
+              pkgs.copier
+              pkgs.go-task
+            ];
+          };
+
           lint = pkgs.mkShell {
             name = "lint";
 
