@@ -48,6 +48,7 @@ tasks:
         rm
         --recursive
         --force
+        {{.CLI_ARGS}}
         ./build/
   build:
     desc: Build the project
@@ -57,12 +58,17 @@ tasks:
       - >
         copier
         --overwrite
+        --defaults
         --data 'username=quickplates'
         --data 'project_name=generic-example'
         --data 'description=Generic project example 👤'
-        --data 'repository=https://github.com/quickplates/generic-example'
-        --data 'docs=true'
-        --data 'docs_url=https://quickplates.github.io/generic-example'
-        --data 'releases=true'
+        {{.CLI_ARGS}}
         ./
         ./build/
+  test:
+    desc: Test the project
+    dir: tests
+    cmds:
+      - >
+        pytest
+        {{.CLI_ARGS}}

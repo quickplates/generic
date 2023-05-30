@@ -73,6 +73,10 @@
         "jock.svg",
         // Jinja templates
         "samuelcolvin.jinjahtml",
+        // Python for tests
+        "ms-python.python",
+        // TOML
+        "tamasfe.even-better-toml",
         // GitHub Copilot
         "GitHub.copilot"
       ],

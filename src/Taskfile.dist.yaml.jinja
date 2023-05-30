@@ -59,6 +59,18 @@ tasks:
         docs
         --
         {{ '{{.CLI_ARGS}}' }}
+  test-docs:
+    desc: Test docs
+    dir: docs
+    deps:
+      - install-docs
+    cmds:
+      - >
+        npm
+        run
+        test
+        --
+        {{ '{{.CLI_ARGS}}' }}
   update-docs-deps:
     desc: Update docs dependencies
     dir: docs

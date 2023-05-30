@@ -16,6 +16,12 @@ runtimes:
     # Needed for yamllint
     - python@3.10.8
 lint:
+  ignore:
+    - linters: [ALL]
+      paths:
+        # Ignore copier answers file
+        - "**/.copier-answers.yaml"
+        - "**/.copier-answers.yml"
   definitions:
     # Nix formatting check (local)
     - name: nix-fmt-check

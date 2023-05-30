@@ -89,3 +89,14 @@ If you use the Dev Container setup,
 you will have the `Trunk` extension installed in Visual Studio Code.
 `Trunk` will be set as the default formatter for all files,
 so you can format with it by using any editor formatting features.
+
+## 🧪 Testing
+
+This project uses [`pytest`](https://pytest.org) for testing.
+You can find all tests in the `tests` directory.
+
+To run all tests, you can run:
+
+```sh
+task test
+```
