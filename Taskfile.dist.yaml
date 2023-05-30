@@ -32,6 +32,12 @@ tasks:
         .copier-answers.yaml
         {{.CLI_ARGS}}
         update
+  copier:
+    desc: Run copier
+    cmds:
+      - >
+        copier
+        {{.CLI_ARGS}}
   update-flake-lock:
     desc: Update flake.lock
     cmds:
