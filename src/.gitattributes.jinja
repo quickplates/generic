@@ -1,7 +1,7 @@
-# Only files in src and tests are being taken into account for language stats
+# Take only files in src into account for language stats
 * linguist-vendored
 {%- if docs %}
 docs/** -linguist-vendored +linguist-documentation
 {%- endif %}
+tests/** -linguist-vendored +linguist-documentation
 src/** -linguist-vendored
-tests/** -linguist-vendored
