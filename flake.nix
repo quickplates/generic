@@ -57,6 +57,7 @@
               pkgs.copier
               pkgs.go-task
               pkgs.trunk-io
+              (pkgs.python3.withPackages (ps: [ps.pytest ps.plumbum]))
             ];
           };
 
@@ -66,6 +67,16 @@
             packages = [
               pkgs.go-task
               pkgs.trunk-io
+            ];
+          };
+
+          test = pkgs.mkShell {
+            name = "test";
+
+            packages = [
+              pkgs.copier
+              pkgs.go-task
+              (pkgs.python3.withPackages (ps: [ps.pytest ps.plumbum]))
             ];
           };
         };
