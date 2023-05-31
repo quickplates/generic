@@ -15,6 +15,14 @@ concurrency:
   push:
     branches:
       - main
+    # Run only on changes to relevant files
+    paths:
+      - "copier.yaml"
+      - "flake.nix"
+      - "flake.lock"
+      - "src/**"
+      - "Taskfile.dist.yaml"
+      - ".github/workflows/example.yaml"
 
 jobs:
   build:
