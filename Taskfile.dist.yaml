@@ -25,6 +25,10 @@ tasks:
   fetch-template:
     desc: Fetch template updates
     interactive: true
+    env:
+      GIT_CONFIG_COUNT: 1
+      GIT_CONFIG_KEY_0: commit.gpgsign
+      GIT_CONFIG_VALUE_0: false
     cmds:
       - >
         copier
@@ -34,6 +38,10 @@ tasks:
         update
   copier:
     desc: Run copier
+    env:
+      GIT_CONFIG_COUNT: 1
+      GIT_CONFIG_KEY_0: commit.gpgsign
+      GIT_CONFIG_VALUE_0: false
     cmds:
       - >
         copier
@@ -60,6 +68,10 @@ tasks:
     desc: Build the project
     deps:
       - clean
+    env:
+      GIT_CONFIG_COUNT: 1
+      GIT_CONFIG_KEY_0: commit.gpgsign
+      GIT_CONFIG_VALUE_0: false
     cmds:
       - >
         copier
