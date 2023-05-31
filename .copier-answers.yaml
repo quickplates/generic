@@ -1,11 +1,10 @@
 ---
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 8731dbc
+_commit: 29b4ff7
 _src_path: https://github.com/quickplates/generic
 description: Generic project template 👤
 docs: false
 docs_url: https://quickplates.github.io/generic
 project_name: generic
-releases: true
 repository: https://github.com/quickplates/generic
 username: quickplates
