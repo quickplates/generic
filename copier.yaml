@@ -29,11 +29,6 @@ docs_url:
   default: "https://{{ username }}.github.io/{{ project_name }}"
   when: "{{ docs }}"
 
-releases:
-  type: bool
-  help: Whether you want to publish releases of your project on GitHub
-  default: true
-
 # Configuration
 
 _subdirectory: src

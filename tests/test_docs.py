@@ -17,7 +17,6 @@ def data() -> dict[str, str]:
         "repository": "https://github.com/quickplates/generic-example",
         "docs": "true",
         "docs_url": "https://quickplates.github.io/generic-example",
-        "releases": "false",
     }
 
 
