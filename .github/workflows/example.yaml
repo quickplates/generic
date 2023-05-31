@@ -243,3 +243,21 @@ jobs:
           --auto
           --delete-branch
           --squash
+      - name: Fetch changes from origin
+        working-directory: example
+        run: >
+          git
+          fetch
+          --prune
+          --prune-tags
+          origin
+      - name: Create release
+        working-directory: example
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: >
+          gh
+          release
+          create
+          0.1.0
+          --generate-notes
