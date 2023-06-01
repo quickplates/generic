@@ -20,6 +20,15 @@ This repository containts a generic-purpose
 You can view the example project generated from this template
 [**here**](https://github.com/quickplates/generic-example).
 
+## 📜 Usage
+
+To create a new project from this template,
+make sure you have [`copier`](https://copier.readthedocs.io) installed and run:
+
+```sh
+copier https://github.com/quickplates/generic path/to/destination
+```
+
 ## 🚀 Features
 
 - fully reproducible development environments with
