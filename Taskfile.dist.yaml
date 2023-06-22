@@ -68,7 +68,7 @@ tasks:
         --defaults
         --vcs-ref HEAD
         --data 'username=quickplates'
-        --data 'project_name=generic-example'
+        --data 'projectname=generic-example'
         --data 'description=Generic project example 👤'
         {{ .CLI_ARGS }}
         ./

@@ -10,7 +10,7 @@ def data() -> dict[str, str]:
 
     return {
         "username": "quickplates",
-        "project_name": "generic-example",
+        "projectname": "generic-example",
         "description": "Generic project example 👤",
     }
 
