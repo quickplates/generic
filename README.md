@@ -41,9 +41,9 @@ copier gh:quickplates/generic .
   with [`Docusaurus`](https://docusaurus.io)
 - continuous integration with [`GitHub Actions`](https://github.com/features/actions)
 
-## 💻 Contributing and Development
+## 💻 Development
 
-Read more about how to contribute and develop the project
+Read more about how to develop the project
 [here](https://github.com/quickplates/generic/blob/main/CONTRIBUTING.md).
 
 If you have any ideas on how to improve this template,

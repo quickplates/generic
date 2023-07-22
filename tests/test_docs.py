@@ -14,6 +14,7 @@ def data() -> dict[str, str]:
         "username": "quickplates",
         "projectname": "generic-example",
         "description": "Generic project example 👤",
+        "releases": "false",
         "docs": "true",
         "docsurl": "https://quickplates.github.io/generic-example",
     }
