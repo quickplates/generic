@@ -87,7 +87,7 @@ jobs:
         run: >
           mkdir
           -p
-          ${{ env.NIX_CACHE_DIR }}'
+          ${{ env.NIX_CACHE_DIR }}
           &&
           nix-store
           --export $(find /nix/store/ -maxdepth 1 -name '*-*')
