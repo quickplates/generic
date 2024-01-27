@@ -65,6 +65,15 @@ jobs:
           --
           task
           shallow-build
+          --
+          --data
+          'accountname=quickplates'
+          --data
+          'projectname=generic-example'
+          --data
+          'reponame=generic-example'
+          --data
+          'description=Generic project example 👤'
       # Create archive to retain file permissions
       - name: Create archive
         run: >
@@ -87,7 +96,7 @@ jobs:
         run: >
           mkdir
           -p
-          ${{ env.NIX_CACHE_DIR }}'
+          ${{ env.NIX_CACHE_DIR }}
           &&
           nix-store
           --export $(find /nix/store/ -maxdepth 1 -name '*-*')
