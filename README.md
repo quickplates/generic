@@ -14,10 +14,10 @@ Generic project template 👤
 
 ## 💡 About
 
-This repository contains a generic-purpose
-[`copier`](https://copier.readthedocs.io) template.
+This repository contains a [`copier`](https://copier.readthedocs.io) template
+that can be used to generic-purpose projects.
 
-You can view the example project generated from this template
+You can view the example of project generated from this template
 [**here**](https://github.com/quickplates/generic-example).
 
 ## 📜 Usage
@@ -26,7 +26,7 @@ To create a new project from this template in the current directory,
 make sure you have [`copier`](https://copier.readthedocs.io) installed and run:
 
 ```sh
-copier gh:quickplates/generic .
+copier copy gh:quickplates/generic .
 ```
 
 ## 🚀 Features
@@ -37,9 +37,9 @@ copier gh:quickplates/generic .
 - automatic environment activation with [`direnv`](https://direnv.net)
 - running tasks with [`Task`](https://taskfile.dev)
 - formatting and linting with [`Trunk`](https://trunk.io)
+- continuous integration with [`GitHub Actions`](https://github.com/features/actions)
 - easy to write and nice looking documentation
   with [`Docusaurus`](https://docusaurus.io)
-- continuous integration with [`GitHub Actions`](https://github.com/features/actions)
 
 ## 💻 Development
 
