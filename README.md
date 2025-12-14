@@ -15,7 +15,7 @@ Generic project template 👤
 ## 💡 About
 
 This repository contains a [`copier`](https://copier.readthedocs.io) template
-that can be used to generic-purpose projects.
+that can be used to create generic-purpose projects.
 
 You can view the example of project generated from this template
 [**here**](https://github.com/quickplates/generic-example).
